@@ -65,6 +65,8 @@ public class Server extends Thread
             indalclient.close();
             System.out.println("9 chiusura socket"+client);
             client.close();
+            //server.close();
+            //passare il valore di "server" per non farlo tornare nullo
 
     }
 

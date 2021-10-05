@@ -63,6 +63,7 @@ public class Client
                 {
                     System.out.println("client termina istruzioni e chiude connessione");
                     msocket.close();
+                    break;
                 }
 
             }
