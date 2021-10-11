@@ -15,6 +15,7 @@ public class Client
     DataOutputStream outversoserver;
     BufferedReader indalserver;
     
+    //main client
     public static void main( String[] args )
     {
         Client mclient=new Client();
@@ -70,7 +71,6 @@ public class Client
             catch(Exception e)
             {   
                 System.out.println(e.getMessage());
-                System.out.println("Errore connessione");
                 System.exit(1);
             }
         }

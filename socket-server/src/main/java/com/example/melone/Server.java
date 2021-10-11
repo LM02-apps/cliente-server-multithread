@@ -15,15 +15,17 @@ public class Server extends Thread
     BufferedReader indalclient;
     DataOutputStream outversoclient;
     
-    public Server(Socket socket)
+    public Server(Socket socket,  ServerSocket server)
     {
         this.client=socket;
+        this.server = server;
     }
 
     public void run()
     {
         try
         {
+
             comunica();
         }
         catch(Exception e)
@@ -31,7 +33,8 @@ public class Server extends Thread
             e.printStackTrace(System.out);
         }
     }
-
+    
+    //main server
     public static void main( String[] args )
     {
         MultiServer tcpserver=new MultiServer();
@@ -64,9 +67,9 @@ public class Server extends Thread
             outversoclient.close();
             indalclient.close();
             System.out.println("9 chiusura socket"+client);
+
             client.close();
-            //server.close();
-            //passare il valore di "server" per non farlo tornare nullo
+            server.close();
 
     }
 

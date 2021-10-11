@@ -7,6 +7,7 @@ import java.util.*;
 //sottoclasse
 public class MultiServer
 {
+
     public void start()
     {
         try
@@ -17,7 +18,7 @@ public class MultiServer
                 System.out.println("1 Server in attesa ... ");
                 Socket msocket=mserversocket.accept();
                 System.out.println("3 Server socket"+msocket);
-                Server serverthread=new Server(msocket);
+                Server serverthread=new Server(msocket,mserversocket);
                 serverthread.start();
             }
         }
@@ -28,4 +29,8 @@ public class MultiServer
             System.exit(1);
         }
     }
+    
+
+
+
 }
