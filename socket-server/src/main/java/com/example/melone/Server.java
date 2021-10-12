@@ -13,6 +13,7 @@ public class Server extends Thread {
     BufferedReader indalclient;
     DataOutputStream outversoclient;
 
+
     public Server(Socket socket, ServerSocket server) {
         this.client = socket;
         this.server = server;
@@ -58,8 +59,11 @@ public class Server extends Thread {
         client.close();
         if (stringaricevuta.equals("STOP")) {
             server.close();
+
         }
 
     }
+
+
 
 }

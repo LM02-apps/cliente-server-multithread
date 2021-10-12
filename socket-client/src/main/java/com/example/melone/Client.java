@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 
 public class Client {
-    String nomeserver = "localhost";
+    static String nomeserver = "localhost";
     int portaserver = 6789;
     Socket msocket;
     BufferedReader tastiera;
@@ -40,9 +40,11 @@ public class Client {
     public void comunica() {
         for (;;) {
             try {
+                
                 System.out.println("Inserisci la stringa" + '\n');
                 stringautente = tastiera.readLine();
 
+                //else break
                 System.out.println("invio stringa");
                 outversoserver.writeBytes(stringautente + '\n');
 
@@ -53,6 +55,7 @@ public class Client {
                     msocket.close();
                     break;
                 }
+                //else 
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -61,5 +64,6 @@ public class Client {
         }
 
     }
+
 
 }
