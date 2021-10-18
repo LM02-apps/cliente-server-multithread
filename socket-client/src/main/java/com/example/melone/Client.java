@@ -58,7 +58,7 @@ public class Client {
                 //else 
 
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println("ERRORE");
                 System.exit(1);
             }
         }

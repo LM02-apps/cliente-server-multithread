@@ -1,6 +1,7 @@
 package com.example.melone;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.net.*;
 import java.util.*;
 
@@ -12,11 +13,13 @@ public class Server extends Thread {
     String stringamodificata = null;
     BufferedReader indalclient;
     DataOutputStream outversoclient;
+    ArrayClient x;
 
 
-    public Server(Socket socket, ServerSocket server) {
+    public Server(Socket socket, ServerSocket server, ArrayClient x) {
         this.client = socket;
         this.server = server;
+        this.x = x;
     }
 
     public void run() {
@@ -35,7 +38,8 @@ public class Server extends Thread {
     }
 
     // passa la stringa al server e la mette in maiuscolo
-    public void comunica() throws Exception {
+    public void comunica() throws Exception 
+    {
 
         indalclient = new BufferedReader(new InputStreamReader(client.getInputStream()));
         outversoclient = new DataOutputStream(client.getOutputStream());
@@ -59,7 +63,12 @@ public class Server extends Thread {
         client.close();
         if (stringaricevuta.equals("STOP")) {
             server.close();
-
+            ArrayList<Socket> client2;
+            client2= x.getClient();
+            for(int i = 0; i < client2.size();i++)
+            {
+                client2.get(i).close();
+            }
         }
 
     }
