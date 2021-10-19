@@ -13,14 +13,22 @@ public class Client {
     DataOutputStream outversoserver;
     BufferedReader indalserver;
 
+    
+
     // main client
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         Client mclient = new Client();
+        
+
         mclient.connetti();
         mclient.comunica();
     }
+    //usare il metodo isconnected sul socket per sapere se il server è chiuso oppure no, 
+    //ogni 2 secondi con thread.sleep fa il controllo
 
     public Socket connetti() {
+
         System.out.println("Client in esecuzione");
         try {
             tastiera = new BufferedReader(new InputStreamReader(System.in));
@@ -37,20 +45,27 @@ public class Client {
         return msocket;
     }
 
-    public void comunica() {
-        for (;;) {
-            try {
+    public void comunica() 
+    {
+        ControlloClient controllo=new ControlloClient(msocket);
+        controllo.start();//ad "inserisci la stringa" il codice si ferma, inserire thread lì
+
+        for (;;) 
+        {
+            try 
+            {
                 
                 System.out.println("Inserisci la stringa" + '\n');
                 stringautente = tastiera.readLine();
+                //il client se è connesso riporta la stringa 
 
-                
                 System.out.println("invio stringa");
                 outversoserver.writeBytes(stringautente + '\n');
 
                 stringarispostaserver = indalserver.readLine();
                 System.out.println("risposta dal server" + '\n' + stringarispostaserver);
-                if (stringautente.equals("FINE") ||stringautente.equals("STOP") ) {
+                if (stringautente.equals("FINE") ||stringautente.equals("STOP") ) 
+                {
                     System.out.println("client termina istruzioni e chiude connessione");
                     msocket.close();
                     break;
@@ -58,7 +73,7 @@ public class Client {
                 
 
             } catch (Exception e) {
-                System.out.println("ERRORE");
+                System.out.println(e.getMessage());
                 System.exit(1);
             }
         }

@@ -1,7 +1,7 @@
 package com.example.melone;
 
 import java.io.*;
-import java.lang.reflect.Array;
+
 import java.net.*;
 import java.util.*;
 
@@ -56,13 +56,13 @@ public class Server extends Thread {
                 System.out.println("6 Echo sul server: " + stringamodificata);
             }
         }
-        outversoclient.close();
-        indalclient.close();
+        outversoclient.close(); //chiusura output
+        indalclient.close();    //chiusura input
         System.out.println("9 chiusura socket" + client);
 
-        client.close();
+        client.close(); //chiusura socketclient
         if (stringaricevuta.equals("STOP")) {
-            server.close();
+            server.close(); //chiusura socketserver
             ArrayList<Socket> client2;
             client2= x.getClient();
             for(int i = 0; i < client2.size();i++)

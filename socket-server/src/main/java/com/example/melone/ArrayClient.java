@@ -5,6 +5,7 @@ import java.net.*;
 import java.util.ArrayList;
 import java.io.*;
 
+
 public class ArrayClient extends Thread
 {
     private Socket socket;
@@ -13,10 +14,9 @@ public class ArrayClient extends Thread
     private MultiServer server;
     ArrayList<Socket> client = new ArrayList<Socket>();
 
-
-
-    
-    public ArrayClient() {
+    public ArrayClient() 
+    {
+        
     }
 
     public void AggiungiClient(Socket x)
