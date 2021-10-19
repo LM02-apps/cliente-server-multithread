@@ -13,13 +13,7 @@ public class ArrayClient extends Thread
     private MultiServer server;
     ArrayList<Socket> client = new ArrayList<Socket>();
 
-    /*
-    public ArrayClient(MultiServer server, Socket socket) throws IOException{
-        this.server = server;
-        this.socket = socket;
-        this.in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
-        this.out = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
-    }*/
+
 
     
     public ArrayClient() {
@@ -39,15 +33,5 @@ public class ArrayClient extends Thread
         this.client = client;
     }
     
-    public void sendMessage(String message) {
-        try {
-            out.writeUTF(message);
-            out.flush();
-        } catch (IOException e) {
-            // TODO: Here you HAVE to check if the connection was closed
-            // And if it was closed, call a method in the server class to
-            // remove this client.
-            e.printStackTrace();
-        }
-    }
+
 }

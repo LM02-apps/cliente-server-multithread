@@ -44,7 +44,7 @@ public class Client {
                 System.out.println("Inserisci la stringa" + '\n');
                 stringautente = tastiera.readLine();
 
-                //else break
+                
                 System.out.println("invio stringa");
                 outversoserver.writeBytes(stringautente + '\n');
 
@@ -55,7 +55,7 @@ public class Client {
                     msocket.close();
                     break;
                 }
-                //else 
+                
 
             } catch (Exception e) {
                 System.out.println("ERRORE");
